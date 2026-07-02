@@ -1,0 +1,77 @@
+identity:
+  author: MasayukiKiyota
+  name: box
+  label:
+    en_US: Box
+    zh_Hans: Box
+    pt_BR: Box
+    ja_JP: Box
+    zh_Hant: Box
+  description:
+    en_US: Interact with Box files and folders
+    zh_Hans: 与 Box 文件和文件夹交互
+    pt_BR: Interaja com arquivos e pastas do Box
+    ja_JP: Box のファイルとフォルダを操作します
+    zh_Hant: 與 Box 檔案和資料夾互動
+  icon: icon.svg
+oauth_schema:
+  client_schema:
+    - name: client_id
+      type: secret-input
+      required: true
+      label:
+        en_US: Client ID
+        zh_Hans: Client ID
+        pt_BR: Client ID
+        ja_JP: Client ID
+        zh_Hant: Client ID
+      help:
+        en_US: Get your Client ID from the Box Developer Console
+        zh_Hans: 从 Box 开发者控制台获取您的 Client ID
+        pt_BR: Obtenha seu Client ID no Console de Desenvolvedores do Box
+        ja_JP: Box 開発者コンソールから Client ID を取得してください
+        zh_Hant: 從 Box 開發者主控台取得您的 Client ID
+      url: https://app.box.com/developers
+    - name: client_secret
+      type: secret-input
+      required: true
+      label:
+        en_US: Client Secret
+        zh_Hans: Client Secret
+        pt_BR: Client Secret
+        ja_JP: Client Secret
+        zh_Hant: Client Secret
+      help:
+        en_US: Get your Client Secret from the Box Developer Console
+        zh_Hans: 从 Box 开发者控制台获取您的 Client Secret
+        pt_BR: Obtenha seu Client Secret no Console de Desenvolvedores do Box
+        ja_JP: Box 開発者コンソールから Client Secret を取得してください
+        zh_Hant: 從 Box 開發者主控台取得您的 Client Secret
+      url: https://app.box.com/developers
+  credentials_schema:
+    - name: access_token
+      type: secret-input
+      label:
+        en_US: Access Token
+        zh_Hans: 访问令牌
+        pt_BR: Token de Acesso
+        ja_JP: アクセストークン
+        zh_Hant: 存取權杖
+    - name: refresh_token
+      type: secret-input
+      label:
+        en_US: Refresh Token
+        zh_Hans: 刷新令牌
+        pt_BR: Token de Atualização
+        ja_JP: リフレッシュトークン
+        zh_Hant: 重新整理權杖
+tools:
+  - tools/list_files.yaml
+  - tools/search_files.yaml
+  - tools/upload_file.yaml
+  - tools/download_file.yaml
+  - tools/create_folder.yaml
+  - tools/delete_file.yaml
+extra:
+  python:
+    source: provider/box.py

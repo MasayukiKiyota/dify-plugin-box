@@ -1,0 +1,56 @@
+identity:
+  name: delete_file
+  author: MasayukiKiyota
+  label:
+    en_US: Delete File/Folder
+    zh_Hans: 删除文件/文件夹
+    pt_BR: Excluir Arquivo/Pasta
+    ja_JP: ファイル/フォルダ削除
+    zh_Hant: 刪除檔案/資料夾
+description:
+  human:
+    en_US: Delete a file or folder from Box
+    zh_Hans: 从 Box 删除文件或文件夹
+    pt_BR: Excluir um arquivo ou pasta do Box
+    ja_JP: Box からファイルやフォルダを削除します
+    zh_Hant: 從 Box 刪除檔案或資料夾
+  llm: Deletes a file or folder from Box identified by its ID. Set is_folder to true when deleting a folder (its contents are deleted recursively). Returns confirmation of the deletion. This action moves the item to the trash.
+parameters:
+  - name: item_id
+    type: string
+    required: true
+    label:
+      en_US: File/Folder ID
+      zh_Hans: 文件/文件夹 ID
+      pt_BR: ID do Arquivo/Pasta
+      ja_JP: ファイル/フォルダ ID
+      zh_Hant: 檔案/資料夾 ID
+    human_description:
+      en_US: The ID of the file or folder to delete from Box
+      zh_Hans: 要从 Box 删除的文件或文件夹的 ID
+      pt_BR: O ID do arquivo ou pasta para excluir do Box
+      ja_JP: Box から削除するファイルやフォルダの ID
+      zh_Hant: 欲從 Box 刪除的檔案或資料夾 ID
+    llm_description: The Box file or folder ID to delete. Box uses numeric IDs, not paths. You can obtain an ID from the List Files or Search Files tools.
+    form: llm
+  - name: is_folder
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Is Folder
+      zh_Hans: 是否为文件夹
+      pt_BR: É uma Pasta
+      ja_JP: フォルダかどうか
+      zh_Hant: 是否為資料夾
+    human_description:
+      en_US: Set to true if the item to delete is a folder
+      zh_Hans: 如果要删除的项目是文件夹，请设置为 true
+      pt_BR: Defina como true se o item a excluir for uma pasta
+      ja_JP: 削除する項目がフォルダの場合は true に設定します
+      zh_Hant: 若欲刪除的項目為資料夾，請設定為 true
+    llm_description: Set to true if the item being deleted is a folder (its contents will be deleted recursively). Set to false for a file. Default is false.
+    form: llm
+extra:
+  python:
+    source: tools/delete_file.py

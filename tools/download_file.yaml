@@ -1,0 +1,56 @@
+identity:
+  name: download_file
+  author: MasayukiKiyota
+  label:
+    en_US: Download File
+    zh_Hans: 下载文件
+    pt_BR: Baixar Arquivo
+    ja_JP: ファイルダウンロード
+    zh_Hant: 下載檔案
+description:
+  human:
+    en_US: Download a file from Box
+    zh_Hans: 从 Box 下载文件
+    pt_BR: Baixar um arquivo do Box
+    ja_JP: Box からファイルをダウンロードします
+    zh_Hant: 從 Box 下載檔案
+  llm: Downloads a file from Box identified by its file ID. Returns file metadata, the file itself as a downloadable blob, and optionally the file content (as base64 for binary files or text for small text files).
+parameters:
+  - name: file_id
+    type: string
+    required: true
+    label:
+      en_US: File ID
+      zh_Hans: 文件 ID
+      pt_BR: ID do Arquivo
+      ja_JP: ファイル ID
+      zh_Hant: 檔案 ID
+    human_description:
+      en_US: The ID of the file to download from Box
+      zh_Hans: 要从 Box 下载的文件 ID
+      pt_BR: O ID do arquivo para baixar do Box
+      ja_JP: Box からダウンロードするファイルの ID
+      zh_Hant: 欲從 Box 下載的檔案 ID
+    llm_description: The Box file ID to download. Box uses numeric IDs, not paths. You can obtain a file ID from the List Files or Search Files tools.
+    form: llm
+  - name: include_content
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Include Content
+      zh_Hans: 包含内容
+      pt_BR: Incluir Conteúdo
+      ja_JP: 内容を含める
+      zh_Hant: 包含內容
+    human_description:
+      en_US: Whether to include the file content in the JSON response
+      zh_Hans: 是否在 JSON 响应中包含文件内容
+      pt_BR: Se deve incluir o conteúdo do arquivo na resposta JSON
+      ja_JP: JSON レスポンスにファイルの内容を含めるかどうか
+      zh_Hant: 是否在 JSON 回應中包含檔案內容
+    llm_description: Set to true to include the file content in the JSON response. For small text files, the content is provided as text. For binary files, it is provided as a base64-encoded string. The file is always also returned as a downloadable blob regardless of this setting. Default is false.
+    form: llm
+extra:
+  python:
+    source: tools/download_file.py

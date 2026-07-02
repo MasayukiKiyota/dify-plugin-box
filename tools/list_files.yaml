@@ -1,0 +1,56 @@
+identity:
+  name: list_files
+  author: MasayukiKiyota
+  label:
+    en_US: List Files
+    zh_Hans: 列出文件
+    pt_BR: Listar Arquivos
+    ja_JP: ファイル一覧
+    zh_Hant: 列出檔案
+description:
+  human:
+    en_US: List files and folders in a Box folder
+    zh_Hans: 列出 Box 文件夹中的文件和文件夹
+    pt_BR: Listar arquivos e pastas em uma pasta do Box
+    ja_JP: Box フォルダ内のファイルとフォルダを一覧表示します
+    zh_Hant: 列出 Box 資料夾中的檔案與資料夾
+  llm: Lists all files and folders within a Box folder identified by its folder ID. If no folder ID is provided, lists the contents of the root folder (ID "0"). Returns details including item IDs, names, types (file/folder), sizes, and modification dates. Use the returned IDs with other Box tools.
+parameters:
+  - name: folder_id
+    type: string
+    required: false
+    label:
+      en_US: Folder ID
+      zh_Hans: 文件夹 ID
+      pt_BR: ID da Pasta
+      ja_JP: フォルダ ID
+      zh_Hant: 資料夾 ID
+    human_description:
+      en_US: The ID of the folder to list (leave empty for the root folder)
+      zh_Hans: 要列出内容的文件夹 ID（留空表示根目录）
+      pt_BR: O ID da pasta para listar (deixe vazio para a raiz)
+      ja_JP: 一覧表示するフォルダの ID（ルートの場合は空のままにします）
+      zh_Hant: 欲列出內容的資料夾 ID（留空代表根目錄）
+    llm_description: The Box folder ID whose contents you want to list. Box uses numeric IDs, not paths. The root folder is always "0". Leave empty to list the root folder.
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 100
+    label:
+      en_US: Limit
+      zh_Hans: 数量限制
+      pt_BR: Limite
+      ja_JP: 上限
+      zh_Hant: 數量限制
+    human_description:
+      en_US: Maximum number of items to return (default is 100)
+      zh_Hans: 返回的最大项目数（默认为100）
+      pt_BR: Número máximo de itens a retornar (padrão é 100)
+      ja_JP: 返す項目の最大数（デフォルトは100）
+      zh_Hant: 傳回的最大項目數量（預設值為100）
+    llm_description: The maximum number of items to return. Default is 100 if not specified.
+    form: llm
+extra:
+  python:
+    source: tools/list_files.py

@@ -1,0 +1,55 @@
+identity:
+  name: create_folder
+  author: MasayukiKiyota
+  label:
+    en_US: Create Folder
+    zh_Hans: 创建文件夹
+    pt_BR: Criar Pasta
+    ja_JP: フォルダ作成
+    zh_Hant: 建立資料夾
+description:
+  human:
+    en_US: Create a new folder in Box
+    zh_Hans: 在 Box 中创建新文件夹
+    pt_BR: Criar uma nova pasta no Box
+    ja_JP: Box に新しいフォルダを作成します
+    zh_Hant: 在 Box 中建立新資料夾
+  llm: Creates a new folder inside a Box parent folder. Provide the folder name and the parent folder ID (root folder "0" if omitted). Returns information about the created folder including its new ID.
+parameters:
+  - name: name
+    type: string
+    required: true
+    label:
+      en_US: Folder Name
+      zh_Hans: 文件夹名称
+      pt_BR: Nome da Pasta
+      ja_JP: フォルダ名
+      zh_Hant: 資料夾名稱
+    human_description:
+      en_US: The name of the new folder
+      zh_Hans: 新文件夹的名称
+      pt_BR: O nome da nova pasta
+      ja_JP: 新しいフォルダの名前
+      zh_Hant: 新資料夾的名稱
+    llm_description: The name for the new folder to create in Box.
+    form: llm
+  - name: parent_folder_id
+    type: string
+    required: false
+    label:
+      en_US: Parent Folder ID
+      zh_Hans: 父文件夹 ID
+      pt_BR: ID da Pasta Pai
+      ja_JP: 親フォルダ ID
+      zh_Hant: 上層資料夾 ID
+    human_description:
+      en_US: The ID of the parent folder (leave empty for the root folder)
+      zh_Hans: 父文件夹的 ID（留空表示根目录）
+      pt_BR: O ID da pasta pai (deixe vazio para a raiz)
+      ja_JP: 親フォルダの ID（ルートの場合は空のままにします）
+      zh_Hant: 上層資料夾的 ID（留空代表根目錄）
+    llm_description: The Box folder ID under which the new folder will be created. Box uses numeric IDs, not paths. The root folder is always "0". Leave empty to create the folder in the root folder.
+    form: llm
+extra:
+  python:
+    source: tools/create_folder.py
