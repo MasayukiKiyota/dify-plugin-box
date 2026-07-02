@@ -1,6 +1,6 @@
 identity:
   name: delete_file
-  author: MasayukiKiyota
+  author: masayukikiyota
   label:
     en_US: Delete File/Folder
     zh_Hans: 删除文件/文件夹

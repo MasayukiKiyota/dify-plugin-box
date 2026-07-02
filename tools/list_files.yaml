@@ -1,6 +1,6 @@
 identity:
   name: list_files
-  author: MasayukiKiyota
+  author: masayukikiyota
   label:
     en_US: List Files
     zh_Hans: 列出文件

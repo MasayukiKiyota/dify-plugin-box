@@ -1,6 +1,6 @@
 identity:
   name: upload_file
-  author: MasayukiKiyota
+  author: masayukikiyota
   label:
     en_US: Upload File
     zh_Hans: 上传文件
