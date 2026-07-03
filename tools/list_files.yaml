@@ -18,7 +18,7 @@ description:
 parameters:
   - name: folder_id
     type: string
-    required: false
+    required: true
     label:
       en_US: Folder ID
       zh_Hans: 文件夹 ID

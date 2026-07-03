@@ -13,6 +13,9 @@ class ListFilesTool(Tool):
         List files and folders inside a Box folder.
         """
         folder_id = tool_parameters.get("folder_id") or BoxUtils.ROOT_FOLDER_ID
+        if folder_id == BoxUtils.ROOT_FOLDER_ID:
+            yield self.create_text_message("Listing files in the root folder is not supported. Please provide a valid folder ID.")
+            return
         try:
             limit = int(tool_parameters.get("limit", 100))
         except (TypeError, ValueError):
