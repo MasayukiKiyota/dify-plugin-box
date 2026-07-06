@@ -276,6 +276,49 @@ class BoxUtils:
         }
 
     @staticmethod
+    def update_file(
+        access_token: str,
+        file_id: str,
+        new_name: Optional[str] = None,
+        parent_folder_id: Optional[str] = None,
+    ) -> dict[str, Any]:
+        """
+        Rename and/or move a file in Box.
+
+        Both operations use the same "Update file" endpoint
+        (PUT /files/{id}): a rename sends {"name": ...} and a move sends
+        {"parent": {"id": ...}}. At least one of new_name / parent_folder_id
+        must be provided.
+
+        Args:
+            access_token: Box OAuth access token
+            file_id: The Box file ID
+            new_name: New name for the file (rename); omit to keep the name
+            parent_folder_id: Destination folder ID (move); omit to keep in place
+
+        Returns:
+            Dictionary describing the updated file.
+        """
+        payload: dict[str, Any] = {}
+        if new_name:
+            payload["name"] = new_name
+        if parent_folder_id:
+            payload["parent"] = {"id": parent_folder_id}
+        if not payload:
+            raise BoxApiError(
+                "Nothing to update: provide a new name and/or a destination folder."
+            )
+
+        session = BoxUtils._session()
+        url = f"{BoxUtils.API_BASE_URL}/files/{file_id}"
+        headers = {**BoxUtils._auth_headers(access_token), "Content-Type": "application/json"}
+
+        response = session.put(url, headers=headers, json=payload, timeout=30)
+        BoxUtils._raise_for_status(response, f"update file '{file_id}'")
+
+        return BoxUtils._format_entry(response.json())
+
+    @staticmethod
     def guess_mime_type(filename: str) -> str:
         mime_type, _ = mimetypes.guess_type(filename)
         return mime_type or "application/octet-stream"

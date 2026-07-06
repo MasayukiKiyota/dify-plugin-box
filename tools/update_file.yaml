@@ -1,0 +1,72 @@
+identity:
+  name: update_file
+  author: masayukikiyota
+  label:
+    en_US: Move/Rename File
+    zh_Hans: 移动/重命名文件
+    pt_BR: Mover/Renomear Arquivo
+    ja_JP: ファイル移動/リネーム
+    zh_Hant: 移動/重新命名檔案
+description:
+  human:
+    en_US: Move a file to another folder and/or rename it in Box
+    zh_Hans: 在 Box 中移动文件到其他文件夹和/或重命名文件
+    pt_BR: Mover um arquivo para outra pasta e/ou renomeá-lo no Box
+    ja_JP: Box のファイルを別のフォルダに移動、または名前を変更します
+    zh_Hant: 在 Box 中將檔案移動到其他資料夾和/或重新命名
+  llm: Moves a file to another folder and/or renames it in Box. Provide the file ID and at least one of new_name (to rename) or parent_folder_id (to move). You can supply both to rename and move in a single call. Returns the updated file information. This tool operates on files only, not folders.
+parameters:
+  - name: item_id
+    type: string
+    required: true
+    label:
+      en_US: File ID
+      zh_Hans: 文件 ID
+      pt_BR: ID do Arquivo
+      ja_JP: ファイル ID
+      zh_Hant: 檔案 ID
+    human_description:
+      en_US: The ID of the file to move or rename
+      zh_Hans: 要移动或重命名的文件的 ID
+      pt_BR: O ID do arquivo a mover ou renomear
+      ja_JP: 移動またはリネームするファイルの ID
+      zh_Hant: 欲移動或重新命名的檔案 ID
+    llm_description: The Box file ID to move or rename. Box uses numeric IDs, not paths. You can obtain an ID from the List Files or Search Files tools.
+    form: llm
+  - name: new_name
+    type: string
+    required: false
+    label:
+      en_US: New Name
+      zh_Hans: 新名称
+      pt_BR: Novo Nome
+      ja_JP: 新しい名前
+      zh_Hant: 新名稱
+    human_description:
+      en_US: The new name for the file (leave empty to keep the current name)
+      zh_Hans: 文件的新名称（留空则保持当前名称）
+      pt_BR: O novo nome do arquivo (deixe vazio para manter o nome atual)
+      ja_JP: ファイルの新しい名前（空のままにすると名前は変更されません）
+      zh_Hant: 檔案的新名稱（留空則保持目前名稱）
+    llm_description: The new name for the file (rename). Leave empty to keep the current name. Provide either this, parent_folder_id, or both.
+    form: llm
+  - name: parent_folder_id
+    type: string
+    required: false
+    label:
+      en_US: Destination Folder ID
+      zh_Hans: 目标文件夹 ID
+      pt_BR: ID da Pasta de Destino
+      ja_JP: 移動先フォルダ ID
+      zh_Hant: 目標資料夾 ID
+    human_description:
+      en_US: The ID of the destination folder (leave empty to keep the file in place)
+      zh_Hans: 目标文件夹的 ID（留空则不移动文件）
+      pt_BR: O ID da pasta de destino (deixe vazio para manter o arquivo no lugar)
+      ja_JP: 移動先フォルダの ID（空のままにするとファイルは移動されません）
+      zh_Hant: 目標資料夾的 ID（留空則不移動檔案）
+    llm_description: The Box folder ID to move the file into (move). Box uses numeric IDs, not paths. Moving to the root folder (ID "0") is not allowed. Leave empty to keep the file in its current folder. Provide either this, new_name, or both.
+    form: llm
+extra:
+  python:
+    source: tools/update_file.py

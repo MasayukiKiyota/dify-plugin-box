@@ -16,6 +16,7 @@ The Box plugin enables Dify applications to interact with Box files and folders.
 - **Download Files**: Retrieve file content from your Box account
 - **Create Folders**: Organize your Box account by creating new folders
 - **Delete Files/Folders**: Remove files or folders from your Box account
+- **Move/Rename Files**: Move a file to another folder and/or rename it
 
 ## Working with Box IDs
 
@@ -24,7 +25,7 @@ Unlike some cloud storage services, Box addresses items by **numeric ID**, not b
 - The **root folder** always has the ID `0`.
 - Every file and folder has its own ID.
 
-Use **List Files** (starting from the root folder `0`) or **Search Files** to discover the IDs of the items you want to operate on. Then pass those IDs to the other tools (download, upload target, create folder, delete).
+Use **List Files** (starting from the root folder `0`) or **Search Files** to discover the IDs of the items you want to operate on. Then pass those IDs to the other tools (download, upload target, create folder, delete, move/rename).
 
 ## Setup
 
@@ -70,6 +71,14 @@ Create a folder named "Reports" in my Box root folder
 ### Delete an item
 ```
 Delete the Box file with ID 123456789
+```
+
+### Move or rename a file
+```
+Rename the Box file with ID 123456789 to "final-report.pdf"
+```
+```
+Move the Box file with ID 123456789 into folder 987654321
 ```
 
 ## Requirements
