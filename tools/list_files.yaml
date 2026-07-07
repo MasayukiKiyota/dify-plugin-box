@@ -26,12 +26,12 @@ parameters:
       ja_JP: フォルダ ID
       zh_Hant: 資料夾 ID
     human_description:
-      en_US: The ID of the folder to list (leave empty for the root folder)
-      zh_Hans: 要列出内容的文件夹 ID（留空表示根目录）
-      pt_BR: O ID da pasta para listar (deixe vazio para a raiz)
-      ja_JP: 一覧表示するフォルダの ID（ルートの場合は空のままにします）
-      zh_Hant: 欲列出內容的資料夾 ID（留空代表根目錄）
-    llm_description: The Box folder ID whose contents you want to list. Box uses numeric IDs, not paths. The root folder is always "0". Leave empty to list the root folder.
+      en_US: The ID of the folder to list
+      zh_Hans: 要列出内容的文件夹 ID
+      pt_BR: O ID da pasta para listar
+      ja_JP: 一覧表示するフォルダの ID
+      zh_Hant: 欲列出內容的資料夾 ID
+    llm_description: The Box folder ID whose contents you want to list. Box uses numeric IDs, not paths.
     form: llm
   - name: limit
     type: number
